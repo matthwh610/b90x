@@ -3,6 +3,7 @@ import React from "react";
 import styled from "@emotion/styled";
 // Components & Hooks
 import TodoApp from "./TodoApp";
+import DailyTask from "./DailyTask";
 import Login from "./Login";
 import { StitchAuthProvider, useStitchAuth } from "./StitchAuth";
 import { Button } from "reactstrap";
@@ -26,9 +27,10 @@ function AppUI() {
     <Layout>
       <Navbar>
         {isLoggedIn && <Button onClick={handleLogout}>Logout</Button>}
-        <AppTitle>MongoDB Stitch To-Do Tutorial</AppTitle>
+        <AppTitle>First Presbyterian Church B90X Challenge</AppTitle>
       </Navbar>
       {isLoggedIn ? <TodoApp /> : <Login />}
+      {isLoggedIn ? <DailyTask /> : <Login />}
     </Layout>
   );
 }

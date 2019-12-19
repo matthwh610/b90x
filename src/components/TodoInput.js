@@ -14,9 +14,9 @@ export default function TodoInput(props) {
       <TextInput
         {...inputProps}
         type="text"
-        placeholder="What Do You Need To Do?"
+        placeholder="Add your name to sign up"
       />
-      <ActionButton action={props.addTodo}>Add To-Do</ActionButton>
+      <ActionButton action={props.addTodo}>Add Me!</ActionButton>
     </Container>
   );
 }

@@ -12,7 +12,7 @@ const NavbarContainer = styled.div`
 `;
 
 const LogoutButton = () => (
-  <Button onClick={() => onLogout() }>Log Out</Button>
+  <Button onClick={() => onLogout() }>Log Out from B90X</Button>
 );
 
 function Navbar() {

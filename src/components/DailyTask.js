@@ -6,23 +6,23 @@ import ErrorBoundary from "react-error-boundary";
 import TodoList from "./TodoList";
 import TodoControls from "./TodoControls";
 import { useStitchAuth } from "./StitchAuth";
-import { useTodoItems } from "./useTodoItems";
+import { useTodoPlan } from "./useTodoPlan";
 import { Card, CardTitle } from "reactstrap";
 
-TodoApp.propTypes = {};
-export default function TodoApp() {
+DailyTask.propTypes = {};
+export default function DailyTask() {
   const { currentUser } = useStitchAuth();
-  const todo = useTodoItems(currentUser.id);
+  const plan = useTodoPlan(currentUser.id);
   // const { items, hasHadTodos, actions } = useTodoItems(currentUser.id);
   return (
     <ErrorBoundary>
       <Layout>
         <TodoCard>
           <Title>
-            <h1>B90X Leaderboard</h1>
+            <h1>Daily Tasks</h1>
           </Title>
-          <TodoControls {...todo} />
-          <TodoList {...todo} />
+          <TodoControls {...plan} />
+          <TodoList {...plan} />
         </TodoCard>
       </Layout>
     </ErrorBoundary>
