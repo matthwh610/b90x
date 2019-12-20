@@ -6,13 +6,13 @@ import { Button } from "reactstrap";
 import TodoInput from "./TodoInput";
 
 TodoControls.propTypes = {
-  items: PropTypes.array,
+  myplan: PropTypes.array,
   actions: PropTypes.object,
 };
 export default function TodoControls(props) {
-  const { items, actions } = props;
+  const { myplan, actions } = props;
   const [inputText, setInputText] = useState("");
-  const hasCheckedItems = items && items.filter(x => x.checked).length > 0;
+  const hasCheckedItems = myplan && myplan.filter(x => x.checked).length > 0;
   const handleInput = e => setInputText(e.target.value);
   const handleAddTodo = () => {
     if (inputText) {
@@ -25,8 +25,8 @@ export default function TodoControls(props) {
       handleAddTodo();
     }
   };
-  const allTodosAreCompleted = items.every(item => item.checked === true);
-  const someTodosAreCompleted = items.every(item => item.checked === true);
+  const allTodosAreCompleted = myplan.every(item => item.checked === true);
+  const someTodosAreCompleted = myplan.every(item => item.checked === true);
   return (
     <Layout>
       <TodoInput
@@ -36,7 +36,7 @@ export default function TodoControls(props) {
         onKeyDown={handleKeyPress}
       />
       <ControlBar>
-        {items.length > 0 && !allTodosAreCompleted && (
+        {myplan.length > 0 && !allTodosAreCompleted && (
           <SelectAllButton
             selected={someTodosAreCompleted}
             onClick={actions.completeAllTodos}
