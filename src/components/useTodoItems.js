@@ -1,5 +1,5 @@
 import React from "react";
-import { items } from "../stitch";
+import { myplan } from "../stitch";
 
 const todoReducer = (state, { type, payload }) => {
   switch (type) {
@@ -75,28 +75,28 @@ export function useTodoItems(userId) {
   const [state, dispatch] = React.useReducer(todoReducer, { todos: [] });
   // Todo Actions
   const loadTodos = async () => {
-    const todos = await items.find({}, { limit: 1000 }).asArray();
+    const todos = await myplan.find({}, { limit: 1000 }).asArray();
     dispatch({ type: "setTodos", payload: { todos } });
   };
   const addTodo = async task => {
     const todo = { task, owner_id: userId };
-    const result = await items.insertOne(todo);
+    const result = await myplan.insertOne(todo);
     dispatch({ type: "addTodo", payload: { ...todo, _id: result.insertedId } });
   };
   const removeTodo = async todoId => {
-    await items.deleteOne({ _id: todoId });
+    await myplan.deleteOne({ _id: todoId });
     dispatch({ type: "removeTodo", payload: { id: todoId } });
   };
   const clearTodos = async () => {
-    await items.deleteMany({});
+    await myplan.deleteMany({});
     dispatch({ type: "clearTodos" });
   };
   const clearCompletedTodos = async () => {
-    await items.deleteMany({ checked: true });
+    await myplan.deleteMany({ checked: true });
     dispatch({ type: "clearCompletedTodos" });
   };
   const setTodoCompletionStatus = async (todoId, status) => {
-    await items.updateOne(
+    await myplan.updateOne(
       { _id: todoId },
       { $set: { checked: status } },
       { returnNewDocument: true },
@@ -104,12 +104,12 @@ export function useTodoItems(userId) {
     dispatch({ type: "setTodoStatus", payload: { todoId, status } });
   };
   const completeAllTodos = async () => {
-    await items.updateMany({ owner_id: userId }, { $set: { checked: true } });
+    await myplan.updateMany({ owner_id: userId }, { $set: { checked: true } });
     dispatch({ type: "completeAllTodos" });
   };
   const toggleTodoStatus = async todoId => {
     const todo = state.todos.find(t => t._id === todoId);
-    await items.updateOne(
+    await myplan.updateOne(
       { _id: todoId },
       { $set: { checked: !todo.currentStatus } },
     );
@@ -120,7 +120,7 @@ export function useTodoItems(userId) {
     loadTodos();
   }, []);
   return {
-    items: state.todos,
+    myplan: state.todos,
     hasHadTodos: state.hasHadTodos,
     actions: {
       addTodo,

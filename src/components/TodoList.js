@@ -5,17 +5,17 @@ import ErrorBoundary from "react-error-boundary";
 import TodoItem from "./TodoItem";
 
 TodoList.propTypes = {
-  items: PropTypes.array,
+  myplan: PropTypes.array,
   actions: PropTypes.object,
 };
 export default function TodoList(props) {
-  const { items, hasHadTodos, actions } = props;
+  const { myplan, hasHadTodos, actions } = props;
 
   return (
     <ErrorBoundary>
       <List>
-        {items.length === 0 && <NoTodoItems hasHadTodos={hasHadTodos} />}
-        {items.map(item => (
+        {myplan.length === 0 && <NoTodoItems hasHadTodos={hasHadTodos} />}
+        {myplan.map(item => (
           <TodoItem
             key={item._id.toString()}
             item={item}
