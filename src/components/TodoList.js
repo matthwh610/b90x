@@ -56,5 +56,5 @@ const NoTodoItems = props => {
 const List = styled.ul`
   padding: 0;
   margin-top: 10px;
-  width: 450px;
+  width: 350px;
 `;

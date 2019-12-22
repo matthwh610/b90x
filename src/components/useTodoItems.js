@@ -79,7 +79,7 @@ export function useTodoItems(userId) {
     dispatch({ type: "setTodos", payload: { todos } });
   };
   const addTodo = async task => {
-    const todo = { task, owner_id: userId };
+    const todo = { task, owner_id: userId, one: task, two: task };
     const result = await myplan.insertOne(todo);
     dispatch({ type: "addTodo", payload: { ...todo, _id: result.insertedId } });
   };
