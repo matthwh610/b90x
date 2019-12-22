@@ -36,17 +36,17 @@ export default function TodoControls(props) {
         onKeyDown={handleKeyPress}
       />
       <ControlBar>
-        {myplan.length > 0 && !allTodosAreCompleted && (
+        {/*myplan.length > 0 && !allTodosAreCompleted && (
           <SelectAllButton
             selected={someTodosAreCompleted}
             onClick={actions.completeAllTodos}
           />
-        )}
-        {hasCheckedItems && (
+        )*/}
+        {/*hasCheckedItems && (
           <CleanupButton onClick={actions.clearCompletedTodos}>
             Clear Completed
           </CleanupButton>
-        )}
+        )*/}
       </ControlBar>
     </Layout>
   );

@@ -11,13 +11,13 @@ export default function TodoInput(props) {
   const { addTodo, ...inputProps } = props;
   return (
     <Container>
-      <TextInput
+{/*      <TextInput
         {...inputProps}
         type="text"
         placeholder="What Do You Need To Do?"
       />
       <ActionButton action={props.addTodo}>Add To-Do</ActionButton>
-    </Container>
+*/}    </Container>
   );
 }
 const Container = styled(InputGroup)`
