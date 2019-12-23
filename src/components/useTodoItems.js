@@ -107,11 +107,11 @@ export function useTodoItems(userId) {
     await myplan.updateMany({ owner_id: userId }, { $set: { checked: true } });
     dispatch({ type: "completeAllTodos" });
   };
-  const toggleTodoStatus = async todoId => {
+  const toggleTodoStatus = async (todoId, status) => {
     const todo = state.todos.find(t => t._id === todoId);
     await myplan.updateOne(
       { _id: todoId },
-      { $set: { checked: !todo.currentStatus } },
+      { $set: { checked: !todo.checked } },
     );
     dispatch({ type: "toggleTodoStatus", payload: { id: todoId } });
   };
