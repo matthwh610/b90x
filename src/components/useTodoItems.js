@@ -1,5 +1,6 @@
 import React from "react";
 import { myplan } from "../stitch";
+import { users } from "../stitch";
 
 const todoReducer = (state, { type, payload }) => {
   switch (type) {
@@ -73,6 +74,7 @@ const todoReducer = (state, { type, payload }) => {
 export function useTodoItems(userId) {
   //
   const [state, dispatch] = React.useReducer(todoReducer, { todos: [] });
+
   // Todo Actions
   const loadTodos = async () => {
     const todos = await myplan.find({}, { limit: 1000 }).asArray();
@@ -113,6 +115,33 @@ export function useTodoItems(userId) {
       { _id: todoId },
       { $set: { checked: !todo.checked } },
     );
+//    const myuserId = userId;
+//    const myuser = db.users.findOne({"_id": myuserId})
+    //const myuser = state.myusers.find(t => t._id === myuserId);
+    //const myuser = users.find({"_id": userId});
+    //var myProgress = myuser.completed;
+    if (!todo.checked) {
+      await users.updateOne(
+        { _id: userId },
+        { $inc: { completed: 1 } },
+      );
+      alert ("Increasing by one");
+    }
+    if (todo.checked) {
+      await users.updateOne(
+        { _id: userId },
+        { $inc: { completed: -1 } },
+      );      
+      alert ("Decreasing by one");
+    }
+
+   //const currprogress = state.users.find(u => u._id === userId);
+    //currprogress++;
+    /*await users.updateOne(
+      { _id: userId },
+      { $set: { completed: currprogress } },
+    );
+*/
     dispatch({ type: "toggleTodoStatus", payload: { id: todoId } });
   };
 
@@ -121,6 +150,7 @@ export function useTodoItems(userId) {
   }, []);
   return {
     myplan: state.todos,
+    users: state.myusers,
     hasHadTodos: state.hasHadTodos,
     actions: {
       addTodo,

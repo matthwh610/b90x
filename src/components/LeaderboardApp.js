@@ -3,29 +3,25 @@ import React from "react";
 import styled from "@emotion/styled";
 import ErrorBoundary from "react-error-boundary";
 // To-Do Components & Hooks
-import TodoList from "./TodoList";
-import TodoControls from "./TodoControls";
+import LeaderboardList from "./LeaderboardList";
+//import TodoControls from "./TodoControls";
 import { useStitchAuth } from "./StitchAuth";
-import { useTodoItems } from "./useTodoItems";
+import { useUserItems } from "./useUserItems";
 import { Card, CardTitle } from "reactstrap";
 
-TodoApp.propTypes = {};
-export default function TodoApp() {
+LeaderboardApp.propTypes = {};
+export default function LeaderboardApp() {
   const { currentUser } = useStitchAuth();
-  const todo = useTodoItems(currentUser.id);
+  const myusers = useUserItems(currentUser.id);
   // const { items, hasHadTodos, actions } = useTodoItems(currentUser.id);
   return (
     <ErrorBoundary>
       <Layout>
         <TodoCard>
           <Title>
-            <h1>Your 90 Day Reading Plan</h1>
-            <MyImage>
-              <img src={ require('./CharlotteBible.jpg') } height = "233" width = "310"/>
-            </MyImage>
+            <h1>B90X Leaderboard</h1>
           </Title>
-          <TodoControls {...todo} />
-          <TodoList {...todo} />
+          <LeaderboardList {...myusers} />
         </TodoCard>
       </Layout>
     </ErrorBoundary>
@@ -39,12 +35,6 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-const MyImage = styled.div`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
 `;
 const TodoCard = styled(Card)`
   max-width: 600px;

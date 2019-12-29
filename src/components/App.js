@@ -3,6 +3,7 @@ import React from "react";
 import styled from "@emotion/styled";
 // Components & Hooks
 import TodoApp from "./TodoApp";
+import LeaderboardApp from "./LeaderboardApp";
 import Login from "./Login";
 import { StitchAuthProvider, useStitchAuth } from "./StitchAuth";
 import { Button } from "reactstrap";
@@ -29,6 +30,7 @@ function AppUI() {
         <AppTitle>FPC B90X Challenge</AppTitle>
       </Navbar>
       {isLoggedIn ? <TodoApp /> : <Login />}
+      {isLoggedIn ? <LeaderboardApp /> : <Login />}
     </Layout>
   );
 }
