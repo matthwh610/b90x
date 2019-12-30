@@ -125,14 +125,12 @@ export function useTodoItems(userId) {
         { _id: userId },
         { $inc: { completed: 1 } },
       );
-      alert ("Increasing by one");
     }
     if (todo.checked) {
       await users.updateOne(
         { _id: userId },
         { $inc: { completed: -1 } },
       );      
-      alert ("Decreasing by one");
     }
 
    //const currprogress = state.users.find(u => u._id === userId);

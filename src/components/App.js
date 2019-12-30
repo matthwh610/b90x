@@ -29,7 +29,9 @@ function AppUI() {
         {isLoggedIn && <Button onClick={handleLogout}>Logout</Button>}
         <AppTitle>FPC B90X Challenge</AppTitle>
       </Navbar>
-      {isLoggedIn ? <TodoApp /> : <Login />}
+      <ToDoSection>
+        {isLoggedIn ? <TodoApp /> : <Login />}
+      </ToDoSection>
       {isLoggedIn ? <LeaderboardApp /> : <Login />}
     </Layout>
   );
@@ -40,7 +42,7 @@ const Layout = styled.div`
   width: 100vw;
   height: 100vh;
   * {
-    font-family: sans-serif;
+    font-family: Oswald;
   }
 `;
 const Navbar = styled.div`
@@ -51,6 +53,9 @@ const Navbar = styled.div`
   height: 62px;
   padding: 10px;
   background: #5e9668;
+`;
+const ToDoSection = styled.div`
+    //overflow:auto; /*added*/
 `;
 const AppTitle = styled.h1`
   margin-right: auto;

@@ -21,7 +21,7 @@ export default function TodoApp() {
           <Title>
             <h1>Your 90 Day Reading Plan</h1>
             <MyImage>
-              <img src={ require('./CharlotteBible.jpg') } height = "233" width = "310"/>
+              <img src={ require('./CharlotteBible.jpg') } height = "155" width = "206"/>
             </MyImage>
           </Title>
           <TodoControls {...todo} />
@@ -39,6 +39,7 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  clear: both;
 `;
 const MyImage = styled.div`
   display: block;

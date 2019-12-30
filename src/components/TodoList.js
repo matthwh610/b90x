@@ -57,4 +57,5 @@ const List = styled.ul`
   padding: 0;
   margin-top: 10px;
   width: 350px;
+  max-width: 90%;
 `;
