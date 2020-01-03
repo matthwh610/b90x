@@ -75,7 +75,7 @@ export function useUserItems(userId) {
   const [state, dispatch] = React.useReducer(myuserReducer, { myusers: [] });
   // myuser Actions
   const loadmyusers = async () => {
-    const myusers = await users.find({}, { limit: 1000 }).asArray();
+    const myusers = await users.find({}, { sort: {'completed': -1}, limit: 1000 }).asArray();
     dispatch({ type: "setmyusers", payload: { myusers } });
   };
   const addmyuser = async task => {

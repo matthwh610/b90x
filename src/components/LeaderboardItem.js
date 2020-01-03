@@ -84,5 +84,7 @@ const Text = styled.span`
   max-width: calc(100% - 24px - 10px);
 `;
 const ProgWrapper = styled.div`
-  width: 50%;
+  margin-left:auto; 
+  margin-right:0;
+  width: 100px;
 `;
