@@ -41,6 +41,7 @@ const LoginButton = styled(Button)`
   :first-of-type {
     margin-top: 0px;
   }
+  background: #7FB548;
 `;
 const ButtonRow = styled.div`
   display: flex;
