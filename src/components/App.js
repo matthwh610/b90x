@@ -52,7 +52,10 @@ const Navbar = styled.div`
   width: 100%;
   height: 62px;
   padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   background: #5CC6F9;
+  margin: auto;
 `;
 const ToDoSection = styled.div`
     //overflow:auto; /*added*/
@@ -60,4 +63,6 @@ const ToDoSection = styled.div`
 const AppTitle = styled.h1`
   margin-right: auto;
   font-size: 6vw;
+  padding-top: 15px;
+  padding-bottom: 15px;
 `;
