@@ -118,18 +118,24 @@ export function useTodoItems(userId) {
 //    const myuserId = userId;
 //    const myuser = db.users.findOne({"_id": myuserId})
     //const myuser = state.myusers.find(t => t._id === myuserId);
+    //const myCount = myplan.count({}, {$and: [{owner_id: userId}, {checked:true}]});
+    const myCountArray = await myplan.find({$and: [{owner_id: userId}, {checked:true}]}, { limit: 1000 }).asArray();
+    const myCount = myCountArray.length;
+    //alert (myCount);
     //const myuser = users.find({"_id": userId});
     //var myProgress = myuser.completed;
     if (!todo.checked) {
       await users.updateOne(
         { _id: userId },
-        { $inc: { completed: 1 } },
+        { $set: {completed: myCount} },
+//        { $inc: { completed: 1 } },
       );
     }
     if (todo.checked) {
       await users.updateOne(
         { _id: userId },
-        { $inc: { completed: -1 } },
+        { $set: {completed: myCount} },
+//        { $inc: { completed: -1 } },
       );      
     }
 
