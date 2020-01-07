@@ -38,7 +38,7 @@ Progress.propTypes = {
 export default function LeaderboardItem(props) {
   const { item, toggleStatus } = props;
   const Checkbox = item.checked ? CheckedIcon : UncheckedIcon;
-  const ProgressPer = Math.round((item.completed / 60)*100,1);
+  const ProgressPer = Math.round((item.completed / 90)*100,1);
   function getPP(val) {
     if (isNaN(ProgressPer)) {
       return 0;
