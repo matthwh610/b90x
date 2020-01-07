@@ -77,7 +77,7 @@ export function useTodoItems(userId) {
 
   // Todo Actions
   const loadTodos = async () => {
-    const todos = await myplan.find({}, { limit: 1000 }).asArray();
+    const todos = await myplan.find({}, { sort: {'task': 1}, limit: 1000 }).asArray();
     dispatch({ type: "setTodos", payload: { todos } });
   };
   const addTodo = async task => {
