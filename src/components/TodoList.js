@@ -46,7 +46,7 @@ const NoTodoItems = props => {
         </span>
       ) : (
         <span>
-          Enter some text and click <strong>Add</strong> to save your first
+          Enter some text and click <strong>HEY LINDSEY</strong> to save your first
           to-do task
         </span>
       )}
